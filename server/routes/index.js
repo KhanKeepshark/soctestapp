@@ -1,0 +1,21 @@
+const Router = require('express')
+const user = require('./user')
+// const userData = require('./userdata')
+const question = require('./question')
+const answer = require('./answer')
+const userChoice = require('./userchoice')
+const region = require('./region')
+const district = require('./district')
+const questionnaire = require('./questionnaire')
+const router = new Router()
+
+router.use('/user', user)
+// router.use('/userdata', userData)
+router.use('/question', question)
+router.use('/answer', answer)
+router.use('/userchoice', userChoice)
+router.use('/region', region)
+router.use('/district', district)
+router.use('/questionnaire', questionnaire)
+
+module.exports = router

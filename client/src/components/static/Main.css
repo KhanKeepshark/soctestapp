@@ -1,0 +1,27 @@
+body { padding-right: 0 !important }
+
+.cardHover{
+    background-color: white;
+}
+
+.collapsible .content{
+    overflow: hidden;
+    height: 0px;
+    transition: height ease 0.3s;
+}
+
+.collapsible .content.show{
+    overflow: hidden;
+    height: 200px;
+}
+
+
+.cardHover:hover{
+    transition: 0.5s;
+    background-color: rgb(204, 204, 204);
+}
+
+.cardHover:not(:hover){
+    transition: 0.5s;
+}
+
