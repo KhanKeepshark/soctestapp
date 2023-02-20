@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import { deleteDistrict, fetchDistrict, updateDistrict } from '../http/districtAPI';
-import { deleteRegion, fetchRegion, updateRegion } from '../http/regionAPI';
 import { useMediaQuery } from 'react-responsive'
 
 const DeleteDistric = ({show, onHide}) => {

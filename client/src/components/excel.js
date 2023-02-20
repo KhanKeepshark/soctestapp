@@ -10,6 +10,12 @@ const ExcelExport = () => {
     const [questions, setQuestions] = useState([])
     const [userchoices, setUserChoices] = useState([])
 
+    useEffect(()=>{
+        fetchUserChoice().then(data => setUserChoices(data))
+        fetchQuestions().then(data => setQuestions(data))
+        fetchUsers().then(data => setUser(data.map(role => role.role != "ADMIN" ? role : "")))
+    }, [])
+
     const q7questions = user.map(u => userchoices.map(i=> i.order == 1 && i.userId == u.id ? i.questionChoice : null)
     .filter(i => i != null)
     ).flat()
@@ -17,18 +23,16 @@ const ExcelExport = () => {
     const firstLine = [['Логин']
     .concat(questions.map(e => e.description)).concat(['']).concat([...new Set(q7questions)])]
 
-    let csvData = firstLine.concat(user.map(u => [u.email].concat(questions.map(e => userchoices.map(i => i.userId == u.id && i.questionChoice == e.description ? i.answerChoice : null)
+    let csvData = firstLine.concat(user.filter(i => i != "").map(u => [u.email].concat(questions.map(e => userchoices.map(i => i.userId == u.id && i.questionChoice == e.description ? i.answerChoice : null)
     .filter(i => i != null)
     ).concat(' ')
     .concat(userchoices.map(i=> i.order == 1 && i.userId == u.id ? i.answerChoice : null)
     .filter(i => i != null))
     )))
 
-    useEffect(()=>{
-        fetchUserChoice().then(data => setUserChoices(data))
-        fetchQuestions().then(data => setQuestions(data))
-        fetchUsers().then(data => setUser(data))
-    }, [])
+    console.log(csvData)
+
+    
 
 return (
     <div className='d-flex flex-column'>

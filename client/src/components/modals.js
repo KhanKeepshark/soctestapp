@@ -13,8 +13,6 @@ const CreateQuestion = ({show, onHide}) => {
     const [questionnaire, setQuestionnaire] = useState([])
     const [questionnaireId, setQuestionnaireId] = useState([])
 
-    console.log(Number(questionnaireId)+1)
-
     useEffect(()=>{
         fetchQuestionnaire().then(data => setQuestionnaire(data))
       }, [])

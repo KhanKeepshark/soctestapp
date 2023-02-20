@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useState } from 'react';
 import { fetchQuestions } from '../http/questionAPI';
 import { fetchUserChoice } from '../http/userChoiceAPI';
@@ -56,7 +53,7 @@ const Q7BarChart = () => {
         fetchUserChoice().then(data => setUserChoices(data))
     }, [])
 
-    const test = userChoices.map(i => i.questionChoice === currentQuestion ? i.answerChoice : null).filter(i=> i != null).reduce((acc, n) => (acc[n] = (acc[n] || 0)+1, acc), {})
+    const test = userChoices.map(i => userData.map(e => e.id === i.userId && i.questionChoice === currentQuestion ? i.answerChoice : null).filter(i=> i != null)).filter(i=> i != "").reduce((acc, n) => (acc[n] = (acc[n] || 0)+1, acc), {})
 
     const select = [...new Set(userChoices.map(type => type.order === 1 ? type.questionChoice : null).filter(i=> i != null))]
 

@@ -27,8 +27,6 @@ const PieChart = () => {
       
     }, [])
 
-    console.log(userData)
-
     const sexSwitch = (e) => {
       setUserData(userData.map(i=> userChoices.map(e=> i.id == e.userId && e.answerChoice === "Женщина").filter(i => i != false).indexOf(true) != -1 ?  {...i, ["sex"]: "Женщина"} : {...i, ["sex"]: "Мужчина"}))
       setCurrentSex(e)
